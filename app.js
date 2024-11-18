@@ -3,6 +3,11 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const collectionRoutes = require('./routes/collectionRoutes');
 
+//for partucular Db and specific collections
+const collection1Routes = require('./routes/collection1Routes');
+//for particlar db and speific collection and query search
+const collection2Routes = require('./routes/collection2Routes');
+
 dotenv.config();
 const app = express();
 
@@ -14,6 +19,12 @@ connectDB();
 
 // Routes
 app.use('/api', collectionRoutes);
+
+// Routes forspecific db and its particular collection
+app.use('/api/collection1', collection1Routes);
+
+//for particlar db and speific collection and query search
+app.use('/api/collection2',collection2Routes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
